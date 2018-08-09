@@ -1,0 +1,27 @@
+{
+  "name": "com.os.app.appstore.launcher",
+  "version": "0.0.1",
+  "description": "",
+  "cordova": {
+    "id": "com.os.app.appstore.launcher",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OutSystemsExperts/outsystems-app-store-launcher-plugin.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "vmfo22",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OutSystemsExperts/outsystems-app-store-launcher-plugin/issues"
+  },
+  "homepage": "https://github.com/OutSystemsExperts/outsystems-app-store-launcher-plugin#readme"
+}
