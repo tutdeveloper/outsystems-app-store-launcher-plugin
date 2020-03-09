@@ -16,7 +16,7 @@
     CDVPluginResult* pluginResult = nil;
     
     NSString* appId = [command.arguments objectAtIndex:1];
-    NSString* applicationName = [command.arguments objectAtIndex:2];
+    NSString* applicationKeyName = [command.arguments objectAtIndex:2];
     
     if(appId !=nil && [appId length] > 0) {
         NSString *iTunesLink = [NSString stringWithFormat:@"https://itunes.apple.com/app/%@", appId];
@@ -34,11 +34,11 @@
                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
             }
         }];
-    } else if(applicationName != nil && [applicationName length] > 0) {
+    } else if(applicationKeyName != nil && [applicationKeyName length] > 0) {
         //Open OutSystems AppStore
         NSURL* webViewUrl = self.webViewEngine.URL;
         
-        NSString * urlFormated = [NSString stringWithFormat:@"%@://%@/NativeAppBuilder/App?Name=%@", webViewUrl.scheme, webViewUrl.host, applicationName];
+        NSString * urlFormated = [NSString stringWithFormat:@"%@://%@/NativeAppBuilder/App?AppKey=%@", webViewUrl.scheme, webViewUrl.host, applicationKeyName];
         NSURL *url = [NSURL URLWithString:[urlFormated stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         NSLog(@"URL --> %@", urlFormated);
         [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success){

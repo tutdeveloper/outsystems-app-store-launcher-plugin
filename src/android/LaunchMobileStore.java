@@ -20,8 +20,8 @@ public class LaunchMobileStore extends CordovaPlugin {
       throws JSONException {
     if (action.equals("openMobileAppStore")) {
       final String appPackageName = args.getString(0);
-      final String applicationName = args.getString(2);
-      if (applicationName != null && appPackageName.length() > 0) {
+      final String applicationKeyName = args.getString(2);
+      if (applicationKeyName != null && appPackageName.length() > 0) {
         try {
           cordova.getActivity()
               .startActivity(new Intent(Intent.ACTION_VIEW,
@@ -31,7 +31,7 @@ public class LaunchMobileStore extends CordovaPlugin {
               .startActivity(new Intent(Intent.ACTION_VIEW,
                   Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
         }
-      } else if (applicationName != null && applicationName.length() > 0) {
+      } else if (applicationKeyName != null && applicationKeyName.length() > 0) {
         cordova.getActivity().runOnUiThread(new Runnable() {
           @Override public void run() {
             String webViewUrl = webView.getUrl();
@@ -41,7 +41,7 @@ public class LaunchMobileStore extends CordovaPlugin {
                 URL url = new URL(webViewUrl);
                 String baseUrl = url.getProtocol() + "://" + url.getHost();
 
-                String buildAppStoreUrl = baseUrl + "/NativeAppBuilder/App?Name=" + applicationName;
+                String buildAppStoreUrl = baseUrl + "/NativeAppBuilder/App?AppKey=" + applicationKeyName;
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(buildAppStoreUrl));
                 cordova.getActivity().startActivity(i);
